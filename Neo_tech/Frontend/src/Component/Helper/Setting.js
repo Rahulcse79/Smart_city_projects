@@ -6,21 +6,21 @@ import { useNavigate } from "react-router-dom";
 export default function Setting() {
 
   const BaseUrl = window.location.hostname || "localhost";
-  const Token = Cookies.get("session");
+  const Token = Cookies.get("NewTech");
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const TokenData = JSON.parse(Token);
-        const response = await fetch(`http://${BaseUrl}:3000/checkAuth`, {
-          method: "post",
+        const response = await fetch(`http://${BaseUrl}:3023/checkAuth`, {
+          method: "get",
           headers: {
             Authorization: "Bearer " + TokenData.AuthToken,
           },
         });
         const data = await response.json();
-        if (data.status === 1) {
+        if (data.success) {
           console.log("Token is valid.");
         } else {
           navigate("/login");

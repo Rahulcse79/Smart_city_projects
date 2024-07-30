@@ -27,7 +27,7 @@ export default function LogIn() {
       return;
     }
     try {
-      let result = await fetch(`http://${BaseUrl}:3000/login`, {
+      let result = await fetch(`http://${BaseUrl}:3023/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,11 +38,11 @@ export default function LogIn() {
         }),
       });
       result = await result.json();
-      if (result.AuthToken) {
+      if (result.success) {
         const Data = {
-          AuthToken: result.AuthToken
+          AuthToken: result.AuthToken,
         }
-        const cookieString = `session=${JSON.stringify(Data)}`;
+        const cookieString = `NeoTech=${JSON.stringify(Data)}`;
         document.cookie = cookieString;
 
         navigate("/");

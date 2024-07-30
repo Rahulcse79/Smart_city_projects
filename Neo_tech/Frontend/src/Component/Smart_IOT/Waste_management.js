@@ -3,7 +3,7 @@ import CanvasJSReact from "@canvasjs/react-charts";
 import Sidebar from "../Sidebar/Sidebar";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-import Map from "../Helper/Map";
+// import Map from "../Helper/Map";
 
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
@@ -13,7 +13,7 @@ const IOTSenser = () => {
   const [dataPointsOfGas, setDataPointsOfGas] = useState([]);
   const [dataPointsOfHumidity, setDataPointsOfHumidity] = useState([]);
   const BaseUrl = window.location.hostname || "localhost";
-  const Token = Cookies.get("session");
+  const Token = Cookies.get("NewTech");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const IOTSenser = () => {
       try {
         const TopicOfUltrasonic = "home/ultrasonic/distance";
         const TokenData = JSON.parse(Token);
-        const response = await fetch(`http://192.168.8.126:3023/api/data`, {
+        const response = await fetch(`http://${BaseUrl}:3023/api/data`, {
           method: "get",
           headers: {
             Authorization: "Bearer " + TokenData.AuthToken,
@@ -78,8 +78,9 @@ const IOTSenser = () => {
     const fetchData2 = async () => {
       try {
         const TokenData = JSON.parse(Token);
-        const response = await fetch(`http://${BaseUrl}:3000/checkAuth`, {
-          method: "post",
+        console.log(TokenData)
+        const response = await fetch(`http://${BaseUrl}:3023/checkAuth`, {
+          method: "get",
           headers: {
             Authorization: "Bearer " + TokenData.AuthToken,
           },
@@ -272,7 +273,7 @@ const IOTSenser = () => {
           </div>
         </div>
       </div>
-      <Map/>   
+     
     </>
   );
 };

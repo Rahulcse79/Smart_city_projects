@@ -12,7 +12,7 @@ const SidebarDataPage = () => {
   const navigate = useNavigate();
 
   const logOutCall = async () => {
-    await Cookies.remove("session");
+    await Cookies.remove("NeoTech");
     await new Promise(resolve => setTimeout(resolve, 500));
     navigate("/login");
   };
