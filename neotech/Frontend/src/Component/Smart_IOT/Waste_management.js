@@ -15,14 +15,15 @@ const IOTSenser = () => {
   const [dataPointsOfHumidity, setDataPointsOfHumidity] = useState([]);
   const BaseUrl = process.env.REACT_APP_API_URL || "localhost";
   const PORT = process.env.REACT_APP_API_PORT || "3000";
-  const CookieName = process.env.REACT_APP_COOKIENAME|| "NeoTech";
+  const CookieName = process.env.REACT_APP_COOKIENAME || "NeoTech";
   const Token = Cookies.get(CookieName);
   const navigate = useNavigate();
 
   useEffect(() => {
+    if(!Token) navigate("/login");
     const fetchData = async () => {
       try {
-        const TopicOfUltrasonic = "home/ultrasonic/distance";
+        const TopicOfUltrasonic = process.env.REACT_APP_TOPIC || "home/ultrasonic/distance";
         const TokenData = JSON.parse(Token);
         const response = await fetch(`http://${BaseUrl}:${PORT}/api/data`, {
           method: "get",
@@ -76,7 +77,6 @@ const IOTSenser = () => {
         console.error("Error fetching data:", error);
       }
     };
-    fetchData();
 
     const fetchData2 = async () => {
       try {

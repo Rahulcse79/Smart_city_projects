@@ -28,6 +28,7 @@ export default function Smart_home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        if(!Token) navigate("/login");
         const TokenData = JSON.parse(Token);
         const response = await fetch(`http://${BaseUrl}:${PORT}/checkAuth`, {
           method: "get",

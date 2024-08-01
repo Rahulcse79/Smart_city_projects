@@ -238,3 +238,32 @@
 }
 
 /* ---end--- */
+
+/* DashBoard */
+
+.dashboard-card {
+  box-shadow: 5px 5px rgba(189, 189, 189, 0.3);
+}
+
+.home-charts {
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard-container {
+  margin-left: 200px;
+  padding: 20px;
+}
+
+.dashboard-row {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.dashboard-container .row {
+  justify-content: flex-end;
+}
+
+/* --- end --- */

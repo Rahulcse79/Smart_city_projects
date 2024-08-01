@@ -14,6 +14,8 @@ const PieChartComponent = ({ memUsage, title, used,unused }) => {
   useEffect(() => {
     if(memUsage > '85%'){
       setColor('red');
+    }else{
+      setColor('#0088FE')
     }
   }, [setColor,memUsage]);
 
