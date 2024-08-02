@@ -102,10 +102,9 @@ const Dashboard = () => {
   return (
     <>
       <Sidebar/>
-      <div className='textlight'>Dashboard</div>
       <Container fluid className="dashboard-container rows-flex">
         <Row className="dashboard-row column-flex">
-          <Col md={3}>
+          <Col md={3} className='column'>
             <DashboardCard
               className="dash-card"
               title="Dustbin level"
@@ -114,7 +113,7 @@ const Dashboard = () => {
               icon={<FaMobileAlt />}
             />
           </Col>
-          <Col md={3}>
+          <Col md={3} className='column'>
             <DashboardCard
               className="dash-card"
               title="Gas level"
@@ -123,7 +122,7 @@ const Dashboard = () => {
               icon={<FaClock />}
             />
           </Col>
-          <Col md={3}>
+          <Col md={3} className='column'>
             <DashboardCard
               className="dash-card"
               title="Humidity"
@@ -132,7 +131,7 @@ const Dashboard = () => {
               icon={<FaHistory />}
             />
           </Col>
-          <Col md={3}>
+          <Col md={3} className='column'>
             <DashboardCard
               className="dash-card"
               title="Temperature"
