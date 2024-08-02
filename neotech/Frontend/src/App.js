@@ -9,7 +9,7 @@ import SmartHome from "./Component/Smart_IOT/Smart_home";
 
 function App() {
 
-  document.body.style.backgroundColor = 'black';
+  document.body.style.backgroundColor = '#4f4e4e';
 
   return (
     <div className="App">
