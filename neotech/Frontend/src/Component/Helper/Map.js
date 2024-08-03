@@ -5,18 +5,17 @@ import { IoLocationSharp } from 'react-icons/io5';
 import Dustbin from '../Image/dustbin.jpg';
 import L from 'leaflet';
 
-const App = () => {
+const App = ({LevelValue}) => {
   const markers = [
     { id: 1, position: [28.618256, 77.386015], name: 'Smart dustbin', imageUrl: Dustbin }
   ];
 
-  // Create a custom icon
   const customIcon = new L.Icon({
-    iconUrl: 'https://img.icons8.com/ios-filled/50/000000/marker.png', // You can use any icon URL or SVG
-    iconSize: [25, 41], // Size of the icon
+    iconUrl: 'https://img.icons8.com/ios-filled/50/000000/marker.png', 
+    iconSize: [25, 41], 
     iconcolor: ['#a80520'],
-    iconAnchor: [12, 41], // Anchor position of the icon
-    popupAnchor: [1, -34], // Popup anchor position
+    iconAnchor: [12, 41], 
+    popupAnchor: [1, -34], 
   });
 
   return (
@@ -32,7 +31,13 @@ const App = () => {
             <Popup>
               <div>
                 <h3>{marker.name}</h3>
-                <img src={marker.imageUrl} alt={marker.name} style={{ maxWidth: '100px', height: 'auto' }} />
+                <div>
+                <img src={marker.imageUrl} alt={marker.name} style={{ maxWidth: '80px', height: 'auto' }} />
+                <p>Depth : {LevelValue?LevelValue.depth+" cm":""}</p>
+                <p>Gas : {LevelValue?LevelValue.gas+" pa":""}</p>
+                <p>Temperature : {LevelValue?LevelValue.temp+" °C":""}</p>
+                <p>Humidity : {LevelValue?LevelValue.humidity+" %":""}</p>
+                </div>
               </div>
             </Popup>
           </Marker>

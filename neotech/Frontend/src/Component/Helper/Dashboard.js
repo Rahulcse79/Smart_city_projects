@@ -108,7 +108,7 @@ const Dashboard = () => {
             <DashboardCard
               className="dash-card"
               title="Dustbin level"
-              value={dataPointsUltrasonic?dataPointsUltrasonic[0].y:"null"}
+              value={dataPointsUltrasonic?dataPointsUltrasonic[0].y+" cm":"null"}
               color="#8cbed6"
               icon={<FaMobileAlt />}
             />
@@ -117,7 +117,7 @@ const Dashboard = () => {
             <DashboardCard
               className="dash-card"
               title="Gas level"
-              value= {dataPointsOfGas?dataPointsOfGas[0].y:"null"}
+              value= {dataPointsOfGas?dataPointsOfGas[0].y + " pa":"null"}
               color="#8cbed6"
               icon={<FaClock />}
             />
@@ -126,7 +126,7 @@ const Dashboard = () => {
             <DashboardCard
               className="dash-card"
               title="Humidity"
-              value={dataPointsOfHumidity?dataPointsOfHumidity[0].y:"null"}
+              value={dataPointsOfHumidity?dataPointsOfHumidity[0].y + " %":"null"}
               color="#8cbed6"
               icon={<FaHistory />}
             />
@@ -135,7 +135,7 @@ const Dashboard = () => {
             <DashboardCard
               className="dash-card"
               title="Temperature"
-              value={dataPointsOfTemp?dataPointsOfTemp[0].y:"null"}
+              value={dataPointsOfTemp?dataPointsOfTemp[0].y + " °C":"null"}
               color="#8cbed6"
               icon={<FaHistory />}
             />
