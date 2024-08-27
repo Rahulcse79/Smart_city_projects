@@ -8,7 +8,7 @@ const User = require("./UserSchema");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 require("dotenv").config();
-const { GUIGetEmails, GUISendEmail } = require("./GUIMailServer");
+
 const {
   getCurrentTime,
   SendMailToDepth,
@@ -194,39 +194,6 @@ app.post("/login", async (req, res) => {
       .json({ success: false, message: "Internal Server Error." });
   }
 });
-
-// GUI mail api.
-
-app.get("/api/gui/receiveEmails",verifyToken,async (req, res) => {
-  await GUIGetEmails((err, emails) => {
-    if (err) {
-      console.error('Error fetching emails:', err);
-      return res.status(500).json({ success: false, error: 'Failed to fetch emails', details: err });
-    }
-    if (!emails || emails.length === 0) {
-      return res.status(400).json({ success: false, error: 'No emails found', details: 'No emails available' });
-    }
-    console.log("Get gui mail success");
-    res.json({ success: true, emails });
-  });
-});
-
-app.post('/api/gui/sendEmail',verifyToken, async(req, res) => {
-  const { to, subject, text } = req.body;
-  if (!to || !subject || !text) {
-    return res.status(400).json({ success: false, error: 'Missing required fields' });
-  }
-  await GUISendEmail(to, subject, text, (err, info) => {
-    if (err) {
-      console.error('Error sending email:', err); 
-      return res.status(500).json({ success: false, error: 'Failed to send email', details: err.toString() });
-    }
-    console.log('Email sent:', info.response);
-    res.status(200).json({ success: true, message: 'Email sent successfully', info: info.response });
-  });
-});
-
-// Gui mail api end.
 
 mongoose.connection.on("error", (error) => {
   console.error("Error connecting to database: ", error);

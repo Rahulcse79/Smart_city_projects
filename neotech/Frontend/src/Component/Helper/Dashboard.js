@@ -30,9 +30,7 @@ const Dashboard = () => {
           },
         });
         const data = await response.json();
-        if (data.success) {
-          console.log("Token is valid.");
-        } else {
+        if (!data.success) {
           navigate("/login");
         }
       } catch (error) {
@@ -108,7 +106,7 @@ const Dashboard = () => {
             <DashboardCard
               className="dash-card"
               title="Dustbin level"
-              value={dataPointsUltrasonic?dataPointsUltrasonic[0].y+" cm":"null"}
+              value={dataPointsUltrasonic && dataPointsUltrasonic[0]?dataPointsUltrasonic[0].y+" cm":"null"}
               color="#8cbed6"
               icon={<FaMobileAlt />}
             />
@@ -117,7 +115,7 @@ const Dashboard = () => {
             <DashboardCard
               className="dash-card"
               title="Gas level"
-              value= {dataPointsOfGas?dataPointsOfGas[0].y + " pa":"null"}
+              value= {dataPointsOfGas && dataPointsOfGas[0]?dataPointsOfGas[0].y + " pa":"null"}
               color="#8cbed6"
               icon={<FaClock />}
             />
@@ -126,7 +124,7 @@ const Dashboard = () => {
             <DashboardCard
               className="dash-card"
               title="Humidity"
-              value={dataPointsOfHumidity?dataPointsOfHumidity[0].y + " %":"null"}
+              value={dataPointsOfHumidity && dataPointsOfHumidity[0]?dataPointsOfHumidity[0].y + " %":"null"}
               color="#8cbed6"
               icon={<FaHistory />}
             />
@@ -135,7 +133,7 @@ const Dashboard = () => {
             <DashboardCard
               className="dash-card"
               title="Temperature"
-              value={dataPointsOfTemp?dataPointsOfTemp[0].y + " °C":"null"}
+              value={dataPointsOfTemp && dataPointsOfTemp[0]?dataPointsOfTemp[0].y + " °C":"null"}
               color="#8cbed6"
               icon={<FaHistory />}
             />
